@@ -1,0 +1,14 @@
+/*
+-*- APA_IUT -*-
+@Year    : 2021
+@Author  : Golbarg Hajian
+*/
+
+.highcharts-xaxis-labels text {
+    text-decoration: none !important;
+    fill: blue !important;
+}
+.symbol.symbol-light-success .symbol-label{
+    background-color: transparent;
+    padding-bottom: 5px;
+}

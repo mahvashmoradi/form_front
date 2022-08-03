@@ -1,0 +1,560 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load jalali_tags %}
+{% block style %}
+
+    {% load static %}
+    {% load int_str_ip %}
+{% endblock %}
+
+{% block page_content %}
+    <!--begin::Main-->
+    <!--begin::Header Mobile-->
+
+    <div id="kt_header_mobile" class="header-mobile header-mobile-fixed">
+        <!--begin::Logo-->
+        <a href="#">
+            <img alt="Logo" src="{% static "media/logos/stats_2.png" %}" class="logo-default max-h-30px"/>
+
+        </a>
+        <!--end::Logo-->
+        <!--begin::Toolbar-->
+        <div class="d-flex align-items-center">
+            <button class="btn btn-hover-icon-primary p-0 ml-2" id="kt_aside_mobile_toggle">
+                    <span class="svg-icon svg-icon-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px"
+                             height="24px"
+                             viewBox="0 0 24 24" version="1.1">
+                            viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24"/>
+                                <rect fill="#000000" x="4" y="5" width="16" height="3" rx="1.5"/>
+                                <path d="M5.5,15 L18.5,15 C19.3284271,15 20,15.6715729 20,16.5 C20,17.3284271 19.3284271,18 18.5,18 L5.5,18 C4.67157288,18 4,17.3284271 4,16.5 C4,15.6715729 4.67157288,15 5.5,15 Z M5.5,10 L18.5,10 C19.3284271,10 20,10.6715729 20,11.5 C20,12.3284271 19.3284271,13 18.5,13 L5.5,13 C4.67157288,13 4,12.3284271 4,11.5 C4,10.6715729 4.67157288,10 5.5,10 Z"
+                                      fill="#000000" opacity="0.3"/>
+                            </g>
+                        </svg><!--end::Svg Icon-->
+                    </span>
+            </button>
+
+
+        </div>
+        <!--end::Toolbar-->
+    </div>
+    <!--end::Header Mobile-->
+
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Page-->
+        <div class="d-flex flex-row flex-column-fluid page">
+
+            <!--begin::Aside-->
+            <div class="aside aside-left d-flex flex-column" id="kt_aside">
+                <!--begin::Brand-->
+                <div class="aside-brand d-flex flex-column align-items-center flex-column-auto py-9">
+                    <!--begin::Logo-->
+                    {#                <div class="btn p-0 symbol symbol-70 symbol-primary" href="?page=index" id="kt_quick_user_toggle">#}
+                    {#                    <div class="symbol-label">#}
+                    {#                        <img alt="Logo" src="{% static 'media/logos/stats_2.png' %}" class="h-75 align-self-center"/>#}
+                    {#                    </div>#}
+                    {#                </div>#}
+                    <!--end::Logo-->
+
+                </div>
+                <!--end::Brand-->
+                <!--begin::Nav Wrapper-->
+                <div class="aside-nav d-flex flex-column align-items-center flex-column-fluid pb-10">
+
+                    <!--begin::Nav-->
+                    <ul class="nav flex-column">
+                        <!--begin::Item-->
+                        <li class="nav-item mb-3" data-toggle="tooltip" data-placement="right" data-container="body"
+                            data-boundary="window" title="بدافزار‌ها">
+                            <a id="menu_bot" href="/bots/" class="nav-link btn btn-icon btn-lg btn-borderless">
+                            <span class="svg-icon svg-icon-3x">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     version="1.1" id="Capa_1" x="0px" y="0px" width="98.023px" height="98.023px"
+                                     viewBox="0 0 98.023 98.023" style="enable-background:new 0 0 98.023 98.023;"
+                                     xml:space="preserve">
+                                    <g>
+                                        <g>
+                                            <path fill="#000000"
+                                                  d="M49.011,8.689c-9.983,0-18.541,6.61-22.158,16.012h44.315C67.553,15.3,58.994,8.689,49.011,8.689z"/>
+                                            <path fill="#000000"
+                                                  d="M93.357,48.938H79.496c0.773-3.128,1.237-6.423,1.348-9.83c4.94-2.967,10.617-8.168,12.028-16.795    c0.416-2.544-1.31-4.942-3.853-5.357c-2.545-0.414-4.939,1.31-5.356,3.851c-0.759,4.64-3.723,7.724-6.633,9.696H21.009    c-2.915-1.974-5.892-5.058-6.65-9.696c-0.416-2.542-2.808-4.265-5.357-3.851c-2.543,0.416-4.268,2.813-3.852,5.357    c1.411,8.626,7.087,13.828,12.028,16.795c0.111,3.407,0.574,6.702,1.348,9.83H4.665C2.089,48.938,0,51.027,0,53.604    c0,2.577,2.089,4.666,4.665,4.666h17.322c1.311,2.577,2.855,4.955,4.602,7.083c-6.1,4.571-11.813,12.548-14.584,16.745    c-1.42,2.148-0.829,5.042,1.32,6.463c0.792,0.523,1.686,0.773,2.568,0.773c1.514,0,2.999-0.735,3.897-2.092    c4.624-6.99,10.586-13.596,13.746-15.472c3.796,2.601,8.073,4.261,12.622,4.759V41.297h5.708v35.232    c4.543-0.498,8.813-2.153,12.608-4.748c3.195,1.89,9.146,8.483,13.76,15.461c0.898,1.356,2.383,2.092,3.896,2.092    c0.883,0,1.776-0.25,2.568-0.773c2.148-1.42,2.74-4.312,1.32-6.463c-2.774-4.2-8.473-12.184-14.579-16.751    c1.745-2.127,3.286-4.503,4.596-7.077h17.322c2.575,0,4.665-2.089,4.665-4.666C98.022,51.027,95.934,48.938,93.357,48.938z"/>
+                                        </g>
+                                    </g>
+                                 </svg><!--end::Svg Icon-->
+                            </span>
+                            </a>
+                        </li>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <li class="nav-item mb-3" data-toggle="tooltip" data-placement="right" data-container="body"
+                            data-boundary="window" title="آسیب پذیری‌ها">
+                            <a id="menu_vuln" href="/vulns/" class="nav-link btn btn-icon btn-lg btn-borderless">
+                            <span class="svg-icon svg-icon-3x">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512.006 512.006"
+                                     style="enable-background:new 0 0 512.006 512.006;" xml:space="preserve">
+                                            <g>
+                                                <g>
+                                                    <g>
+                                                        <path fill="#000000"
+                                                              d="M212.265,390.248l-60.331,60.331c-25.012,25.012-65.517,25.012-90.508,0.005c-24.996-24.996-24.996-65.505-0.005-90.496     l120.683-120.683c24.991-24.992,65.5-24.992,90.491,0c8.331,8.331,21.839,8.331,30.17,0c8.331-8.331,8.331-21.839,0-30.17     c-41.654-41.654-109.177-41.654-150.831,0L31.252,329.918c-41.654,41.654-41.654,109.177,0,150.831     c41.649,41.676,109.177,41.676,150.853,0l60.331-60.331c8.331-8.331,8.331-21.839,0-30.17S220.596,381.917,212.265,390.248z"/>
+                                                        <path fill="#000000"
+                                                              d="M480.756,182.08c41.654-41.654,41.654-109.177,0-150.831c-41.653-41.653-109.173-41.653-150.848-0.005l-72.389,72.389     c-8.331,8.331-8.331,21.839,0,30.17s21.839,8.331,30.17,0l72.384-72.384c25.008-24.992,65.521-24.992,90.513,0     c24.991,24.991,24.991,65.5,0,90.491L317.85,284.646c-24.992,24.992-65.5,24.992-90.491,0c-8.331-8.331-21.839-8.331-30.17,0     s-8.331,21.839,0,30.17c41.654,41.654,109.177,41.654,150.831,0L480.756,182.08z"/>
+                                                        <path fill="#000000"
+                                                              d="M399.099,368.926c-8.331-8.331-21.839-8.331-30.17,0c-8.331,8.331-8.331,21.839,0,30.17l63.979,63.979     c8.331,8.331,21.839,8.331,30.17,0c8.331-8.331,8.331-21.839,0-30.17L399.099,368.926z"/>
+                                                        <path fill="#000000"
+                                                              d="M112.946,143.113c8.331,8.331,21.839,8.331,30.17,0s8.331-21.839,0-30.17L79.073,48.9c-8.331-8.331-21.839-8.331-30.17,0     c-8.331,8.331-8.331,21.839,0,30.17L112.946,143.113z"/>
+                                                        <path fill="#000000"
+                                                              d="M490.67,320h-64c-11.782,0-21.333,9.551-21.333,21.333c0,11.782,9.551,21.333,21.333,21.333h64     c11.782,0,21.333-9.551,21.333-21.333C512.003,329.551,502.452,320,490.67,320z"/>
+                                                        <path fill="#000000"
+                                                              d="M170.67,106.667c11.782,0,21.333-9.551,21.333-21.333v-64C192.003,9.551,182.452,0,170.67,0     c-11.782,0-21.333,9.551-21.333,21.333v64C149.336,97.115,158.888,106.667,170.67,106.667z"/>
+                                                        <path fill="#000000"
+                                                              d="M21.336,192h64c11.782,0,21.333-9.551,21.333-21.333c0-11.782-9.551-21.333-21.333-21.333h-64     c-11.782,0-21.333,9.551-21.333,21.333C0.003,182.449,9.554,192,21.336,192z"/>
+                                                        <path fill="#000000"
+                                                              d="M341.336,405.333c-11.782,0-21.333,9.551-21.333,21.333v64c0,11.782,9.551,21.333,21.333,21.333     c11.782,0,21.333-9.551,21.333-21.333v-64C362.67,414.885,353.118,405.333,341.336,405.333z"/>
+                                                    </g>
+                                                </g>
+                                            </g>
+
+                               </svg><!--end::Svg Icon-->
+                            </span>
+                            </a>
+                        </li>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <li class="nav-item mb-3" data-toggle="tooltip" data-placement="right" data-container="body"
+                            data-boundary="window" title="پایگاه‌داده‌ها">
+                            <a id="menu_db" href="/databases/"
+                               class="nav-link btn btn-icon btn-lg btn-borderless">
+                            <span class="svg-icon svg-icon-3x">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     version="1.1" id="Capa_1" x="0px" y="0px" width="95.103px" height="95.103px"
+                                     viewBox="0 0 95.103 95.103" style="enable-background:new 0 0 95.103 95.103;"
+                                     xml:space="preserve">
+                                        <g>
+                                            <g id="Layer_1_14_">
+                                                <g>
+                                                    <g>
+                                                        <g>
+                                                            <path fill="#000000"
+                                                                  d="M47.561,0C25.928,0,8.39,6.393,8.39,14.283v11.72c0,7.891,17.538,14.282,39.171,14.282       c21.632,0,39.17-6.392,39.17-14.282v-11.72C86.731,6.393,69.193,0,47.561,0z"/>
+                                                        </g>
+                                                    </g>
+                                                    <g>
+                                                        <g>
+                                                            <path fill="#000000"
+                                                                  d="M47.561,47.115c-20.654,0-37.682-5.832-39.171-13.227c-0.071,0.353,0,19.355,0,19.355       c0,7.892,17.538,14.283,39.171,14.283c21.632,0,39.17-6.393,39.17-14.283c0,0,0.044-19.003-0.026-19.355       C85.214,41.284,68.214,47.115,47.561,47.115z"/>
+                                                        </g>
+                                                    </g>
+                                                    <path fill="#000000"
+                                                          d="M86.694,61.464c-1.488,7.391-18.479,13.226-39.133,13.226S9.875,68.854,8.386,61.464L8.39,80.82     c0,7.891,17.538,14.282,39.171,14.282c21.632,0,39.17-6.393,39.17-14.282L86.694,61.464z"/>
+                                                </g>
+                                            </g>
+                                        </g>
+                                </svg><!--end::Svg Icon-->
+                            </span>
+                            </a>
+                        </li>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <li class="nav-item mb-3" data-toggle="tooltip" data-placement="right" data-container="body"
+                            data-boundary="window" title="لیست سیاه">
+                            <a id="menu_blacklist" href="/blacklists/"
+                               class="nav-link btn btn-icon btn-lg btn-borderless">
+                            <span class="svg-icon svg-icon-3x">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 503.322 503.322"
+                                     style="enable-background:new 0 0 503.322 503.322;" xml:space="preserve">
+                                    <g>
+                                    <path fill="#ffffff" opacity="0.3"
+                                          d="M295.051,34.712V17.356C295.051,7.81,287.241,0,277.695,0h-52.068  c-9.546,0-17.356,7.81-17.356,17.356v17.356h-34.712c-5.207,0-8.678,3.471-8.678,8.678v60.746c0,5.207,3.471,8.678,8.678,8.678  h156.203c5.207,0,8.678-3.471,8.678-8.678V43.39c0-5.207-3.471-8.678-8.678-8.678H295.051z"/>
+                                    <path fill="#ffffff"
+                                          d="M338.441,60.746v43.39c0,5.207-3.471,8.678-8.678,8.678H173.559c-5.207,0-8.678-4.339-8.678-8.678  v-43.39h-52.068c-19.092,0-34.712,15.62-34.712,34.712V468.61c0,19.092,15.62,34.712,34.712,34.712h277.695  c19.092,0,34.712-15.62,34.712-34.712V95.458c0-19.092-15.62-34.712-34.712-34.712H338.441z"/>
+                                    <path id="pathbl" opacity="0.3"
+                                          d="M355.797,303.729c0-57.275-46.861-104.136-104.136-104.136s-104.136,46.861-104.136,104.136  s46.861,104.136,104.136,104.136S355.797,361.003,355.797,303.729"/>
+                                    <path fill="#ffffff"
+                                          d="M312.407,312.407H190.915c-5.207,0-8.678-3.471-8.678-8.678c0-5.207,3.471-8.678,8.678-8.678h121.492  c5.207,0,8.678,3.471,8.678,8.678C321.085,308.936,317.614,312.407,312.407,312.407z"/>
+</g>
+                                    </svg>
+                            </span>
+                            </a>
+                        </li>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <li class="nav-item mb-3" data-toggle="tooltip" data-placement="right" data-container="body"
+                            data-boundary="window" title="قربانیان حملات منع سرویس">
+                            <a id="menu_amp_ddos" href="/amp_ddos/"
+                               class="nav-link btn btn-icon btn-lg btn-borderless">
+                            <span class="svg-icon svg-icon-3x">
+                                <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-04-19-122603/theme/html/demo10/dist/../src/media/svg/icons/Design/Target.svg-->
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     version="1.1" viewBox="0 0 196.288 196.288"
+                                     enable-background="new 0 0 196.288 196.288">
+                                    <g>
+                                        <path fill="#000000"
+                                              d="m196.174,34.573c-0.39-1.964-1.733-3.604-3.582-4.374l-18.719-7.785-7.785-18.719c-0.769-1.849-2.41-3.192-4.374-3.582-1.966-0.388-3.993,0.227-5.409,1.643l-19.82,19.82c-0.917,0.918-1.513,2.108-1.697,3.393l-1.587,11.096c-1.435,0.393-2.853,0.833-4.255,1.312-13.042-7.756-27.972-11.901-43.542-11.901-22.813,0-44.26,8.884-60.391,25.015s-25.013,37.579-25.013,60.392 8.884,44.26 25.015,60.391 37.578,25.015 60.391,25.015 44.26-8.884 60.391-25.015 25.015-37.578 25.015-60.391c0-15.57-4.145-30.5-11.901-43.542 0.478-1.402 0.918-2.82 1.311-4.254l11.097-1.588c1.285-0.184 2.475-0.779 3.393-1.697l19.82-19.82c1.415-1.416 2.031-3.445 1.642-5.409zm-41.673,17.211c-2.536,0.363-4.554,2.295-5.039,4.797-2.472,11.509-8.196,22.009-16.558,30.371-11.064,11.064-25.933,17.428-41.469,17.902 0.474-15.537 6.838-30.405 17.902-41.469 8.388-8.388 18.928-14.122 30.48-16.582 2.461-0.524 4.334-2.528 4.69-5.019l1.878-13.135 12.067-12.066 5.292,12.726c0.609,1.464 1.772,2.627 3.236,3.236l12.726,5.292-12.067,12.067-13.138,1.88zm-74.963,59.337c0.182,3.031 2.599,5.448 5.63,5.63 1.468,0.088 2.932,0.132 4.394,0.132 8.113,0 16.097-1.364 23.656-3.938-0.484,6.674-3.308,12.884-8.087,17.664-5.269,5.269-12.273,8.17-19.725,8.17s-14.456-2.902-19.725-8.17c-5.269-5.269-8.17-12.273-8.17-19.725s2.902-14.456 8.17-19.725c4.781-4.781 10.992-7.604 17.668-8.088-3.039,8.92-4.388,18.435-3.811,28.05zm79.273-.238c0,19.607-7.635,38.041-21.5,51.905-13.864,13.865-32.298,21.5-51.905,21.5s-38.041-7.635-51.905-21.5c-13.866-13.864-21.501-32.298-21.501-51.905s7.635-38.041 21.5-51.905c13.864-13.865 32.298-21.5 51.905-21.5 10.423,0 20.506,2.178 29.755,6.282-5.175,3.086-9.984,6.814-14.31,11.14-4.861,4.861-8.946,10.345-12.22,16.247-11.263-0.906-22.839,2.93-31.436,11.527-15.555,15.555-15.555,40.865 0,56.42 7.777,7.777 17.994,11.666 28.21,11.666s20.433-3.889 28.21-11.666c8.597-8.597 12.433-20.174 11.527-31.437 5.902-3.273 11.386-7.358 16.247-12.219 4.325-4.325 8.054-9.135 11.14-14.309 4.105,9.248 6.283,19.331 6.283,29.754z"/>
+                                    </g>
+                                </svg><!--end::Svg Icon-->
+                            </span>
+                            </a>
+                        </li>
+                        <!--end::Item-->
+                    </ul>
+                    <!--end::Nav-->
+                </div>
+                <!--end::Nav Wrapper-->
+            </div>
+            <!--end::Aside-->
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+                <!--begin::Header-->
+                <!--begin::Header Wrapper-->
+                <div class="header-wrapper rounded-top-xl d-flex flex-grow-25 align-items-center ">
+                    <!--begin::Container-->
+                    {#                <div class="container">#}
+                    <img src="{% static "media/logos/ava.png" %}" class="pl-8 pl-lg-8 py-3 py-lg-2 logo"/>
+                    <div class="container-fluid d-flex align-items-center justify-content-end flex-wrap">
+                        <!--begin::Toolbar-->
+
+                        <div class="d-flex align-items-center justify-content-end py-3 py-lg-2">
+                            <!--begin::Dropdown-->
+                            <a href="#"
+                               aria-haspopup="true" aria-expanded="false">
+                                <img src="{% static "media/logos/maher_logo.png" %}" style="width:65%"/>
+                            </a>
+                            <div class=" dropdown mr-2 m-logo">
+
+                                {#                            <a href="#" aria-haspopup="true" aria-expanded="false">#}
+                                {#                                <img src="{% static "media/logos/tech_logo.png" %}" style="width:30%"/>#}
+
+                                {#                            {% if user.is_authenticated %}#}
+                                <div class="dropdown pt-2" dir="ltr">
+
+                                    <a href="#"
+                                       class="align-items-center link-dark text-decoration-none dropdown-toggle m-0"
+                                       id="dropdownNavLink" data-bs-toggle="dropdown"
+                                       aria-expanded="false">
+                                        <i class="fas fa-user" style="font-size: 2rem; color:black;width:30%"></i>
+                                        <span id="user_email">user</span>
+                                    </a>
+                                    <ul class="dropdown-menu text-small shadow"
+                                        aria-labelledby="dropdownNavLink" style="direction: rtl">
+                                        <li><a class="dropdown-item text-end"
+                                               href="auth/users/edit/"
+                                               aria-current="page"> {% trans "account" %}</a></li>
+                                        <li><a class="dropdown-item text-end"
+                                               href="/ip-edit/">{% trans "ip range company" %}</a></li>
+                                        {#                                                            <li><a class="dropdown-item text-end"#}
+                                        {#                                                                   href="#">تغییر رمز عبور</a></li>#}
+                                        <li><a class="dropdown-item text-end"
+                                               href="/auth/logout">{% trans "Exit" %}</a></li>
+                                    </ul>
+                                </div>
+
+                                {#                            {% else %}#}
+                                {#                                <div class="text-center" dir="ltr">#}
+                                {#                                                                <i class="fas fa-user" style="font-size: 2rem; color:black;width:30%"></i>#}
+                                {##}
+                                {#                                    <a href="{% url 'my_login' %}">ورود</a> |#}
+                                {#                                    <a href="{% url 'my_login' %}">ورود</a> |#}
+                                {#                                    <a href="#">ثبت نام</a></div>#}
+                                {#                                    <a href="{% url 'my_create' %}">ثبت نام</a></div>#}
+                                {#                            {% endif %}#}
+                                {#                        </a>#}
+                            </div>
+                            <!--end::Dropdown-->
+                        </div>
+                        <!--end::Toolbar-->
+                    </div>
+                    {#                </div>#}
+                    <!--end::Container-->
+                </div>
+                <!--end::Header Wrapper-->
+                <!--end::Header-->
+                <!--begin::Content-->
+                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                    <!--begin::Entry-->
+                    <div class="d-flex flex-column-fluid">
+                        <!--begin::Container-->
+                        <div class="container">
+
+                            <!--begin::Row-->
+                            <div class="row mt-0 mt-lg-8">
+                                <div class="col-xl-12">
+                                    <!--begin::Charts Widget 5-->
+                                    <!--begin::Card-->
+                                    <div class="card card-custom gutter-b">
+
+                                        <!--begin::Card header-->
+                                        <div class="card-header h-auto border-0 m-auto">
+                                            <div class="card-title py-5 ">
+                                                <h2 class="font-weight-boldest">
+                                                    <span class="text-dark font-weight-bolder">{{ help.title }}</span>
+                                                </h2>
+                                            </div>
+                                        </div>
+                                        <!--end:: Card header-->
+                                        <!--begin::Card body-->
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-12 d-flex flex-column font-size-h4 text-justify">
+                                                    {{ help.desc }}
+                                                    {#                                                     <i class='test fas fa-calendar-alt' style='color:#34f3ef'></i>#}
+                                                    {#                                                     <i class='test fa-calendar-alt' style='color:#34f3ef'></i>#}
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end:: Card body-->
+                                    </div>
+                                    <!--end:: Card-->
+                                    <!--end:: Charts Widget 5-->
+                                </div>
+                            </div>
+                            <!--end::Row-->
+                            <!--begin::Row Date Picker-->
+                            <div class="row mt-0 mt-lg-8">
+                                <div class="col-xl-12">
+                                    <!--begin::Charts Widget 5-->
+                                    <!--begin::Card-->
+                                    <div class="card card-custom gutter-b">
+                                        <!--begin::Card body-->
+                                        .
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-12 d-flex flex-column font-size-h4 text-justify">
+                                                    <div>
+                                                        <form id="search_form" class="row g-3" style="direction: ltr">
+                                                            {#                                                            <div dir="ltr">#}
+                                                            {#                                                                <range-selector#}
+                                                            {#                                                                        id="yearSelector"#}
+                                                            {#                                                                        min-label="Minimum"#}
+                                                            {#                                                                        max-label="Maximum"#}
+                                                            {#                                                                        min-range="0"#}
+                                                            {#                                                                        min-range="185.188.113.0"#}
+                                                            {#                                                                        max-range="255"#}
+                                                            {#                                                                        max-range="185.188.113.255"#}
+                                                            {#                                                                        number-of-legend-items-to-show="7"#}
+                                                            {#                                                                        slider-color="#6b5b95"#}
+                                                            {#                                                                />#}
+                                                            {#                                                            </div>#}
+
+                                                            <div class="row">
+                                                                <div class="col-auto"><span id="date_modal"
+                                                                                            class="input-group-text cursor-pointer">
+                                                                                                                            <!-- Trigger/Open The Modal -->
+                                                                                                            <i class='fas fa-calendar-alt'
+                                                                                                               style='color:#34f3ef'></i></span>
+                                                                </div>
+
+
+                                                                <!-- The Modal -->
+                                                                <div id="myModal" class="modal">
+
+                                                                    <!-- Modal content -->
+                                                                    <div class="modal-content">
+                                                                        <span class="close">&times;</span>
+                                                                        <p>Some suggest</p>
+                                                                        <li id="an_hour"><a href="#">an hour ago</a>
+                                                                        </li>
+                                                                        {#                                                                        <li id="an_houar"><a#}
+                                                                        {#                                                                                href="{% url 'my_login' %}">ورود</a>an#}
+                                                                        {#                                                                            houars ago#}
+                                                                        {#                                                                        </li>#}
+                                                                        <li id="an_week"> an week ago</li>
+                                                                        <li id="an_month"> a month ago</li>
+                                                                    </div>
+
+                                                                </div>
+                                                              {{ form.as_p }}
+
+                                                                {#                                                                                                                                <div class="col"><input id="start_date_jalali"#}
+                                                                {#                                                                                                                                                        type="text"#}
+                                                                {#                                                                                                                                                        placeholder="From: Date Picker Text"#}
+                                                                {#                                                                                                                                                        data-name="start_date_jalali"#}
+                                                                {#                                                                                                                                                        class="form-control"></div>#}
+                                                                {##}
+                                                                {#                                                                <div class="col"><input type="text" id="end_date_jalali"#}
+                                                                {#                                                                                        placeholder="To: Date Picker Text"#}
+                                                                {#                                                                                        data-name="end_date_jalali"#}
+                                                                {#                                                                                        class="form-control"></div>#}
+
+                                                                {#                                                                {% for field in form %}#}
+                                                                {#                                                                    <div class="form-group row">#}
+                                                                {#                                                                        <div class="col">#}
+                                                                {#                                                                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>#}
+                                                                {#                                                                            {{ field }}#}
+                                                                {#                                                                        </div>#}
+                                                                {#                                                                    </div>#}
+                                                                {#                                                                {% endfor %}#}
+                                                                <div class="container">
+                                                                    <h5 class="mt-5">{% trans "ip range" %}
+                                                                        <span>
+                                                                               <a class="delete_item"
+                                                                                  href="#">
+                                                                                     <i class="fas fa-plus text-danger"
+                                                                                        id="add_ip_range"></i>
+                                                                             </a>
+                                                                            </span>
+                                                                        <hr>
+                                                                    </h5>
+                                                                    <ul id="ip_ul">
+                                                                        <li class="row align-items-baseline">
+                                                                            <p class="col-4">sip</p>
+                                                                            <p class="col-4">eip</p>
+{#                                                                            <p class="col-4"> {% trans "delete" %} </p>#}
+
+                                                                            <hr>
+
+                                                                        </li>
+{#                                                                        <li class="row align-items-baseline">#}
+{#                                                                            <p class="col-4">{{ form.ip_start }} </p>#}
+{#                                                                            <p class="col-4">{{ form.ip_end }} </p>#}
+{#                                                                            <a class="col-4 delete_item" href="#">#}
+{#                                                                                <i class="fa fa-remove text-danger fa-lg"#}
+{#                                                                                   aria-hidden="true"></i> </a>#}
+{#                                                                        </li>#}
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="col-auto">
+                                                                    <button type="submit"
+                                                                            class="btn btn-primary mb-3">برو
+                                                                    </button>
+                                                                </div>
+
+                                                            </div>
+                                                            {#                                                            <label for="customRange1" class="form-label">Example#}
+                                                            {#                                                                range</label>#}
+                                                            {#                                                            <input type="range" class="form-range" id="customRange1">#}
+                                                            {##}
+                                                            {#                                                            <span class="MuiSlider-thumb MuiSlider-thumbColorPrimary"#}
+                                                            {#                                                                  tabindex="0" role="slider" style="left: 13.7097%;"#}
+                                                            {#                                                                  data-index="0" aria-labelledby="range-slider"#}
+                                                            {#                                                                  aria-orientation="horizontal" aria-valuemax="29400000"#}
+                                                            {#                                                                  aria-valuemin="16000" aria-valuenow="4044452"#}
+                                                            {#                                                                  aria-valuetext="4044452°C"></span>#}
+                                                            {#                                                            <span class="MuiSlider-track"#}
+                                                            {#                                                                  style="left: 42.0968%; width: 41.9355%;">sghk</span>#}
+                                                            {##}
+                                                            {#                                                            <div dir="ltr">#}
+                                                            {##}
+                                                            {#                                                            </div>#}
+{#                                                            <div class="row d-none">#}
+{##}
+{#                                                                <div class="col"><input type="text" name="from_time"#}
+{#                                                                                        id="start_date_miladi"#}
+{#                                                                                        placeholder="From: Date Picker Date"#}
+{#                                                                                        data-name="start_date_miladi"#}
+{#                                                                                        class="form-control"></div>#}
+{##}
+{#                                                                <div class="col"><input type="text" name="to_time"#}
+{#                                                                                        id="end_date_miladi"#}
+{#                                                                                        placeholder="To: Date Picker Date"#}
+{#                                                                                        data-name="end_date_miladi"#}
+{#                                                                                        class="form-control"></div>#}
+{##}
+{#                                                            </div>#}
+                                                            <!--begin::Select ip range-->
+                                                            {##}
+                                                            {#                                                            <div dir="ltr">#}
+                                                            {#                                                                <label for="points">Select the ip range :</label>#}
+                                                            {##}
+                                                            {#                                                                <div class="row">#}
+                                                            {#                                                                    <div><span#}
+                                                            {#                                                                            id="my_custom_lable">test</span>#}
+                                                            {#                                                                    </div>#}
+                                                            {#                                                                </div>#}
+                                                            {#                                                                <br>#}
+                                                            {#                                                                <div class="row"><input type="range" id="points"#}
+                                                            {#                                                                ></div>#}
+                                                            {#                                                                name="points">#}
+                                                            {#                                                            </div>#}
+                                                            {#                                                            <!--end::Select ip range-->`#}
+                                                            {##}
+                                                            {##}
+                                                            {#                                                    </div>#}
+                                                        </form>
+
+                                                        <p>{{ request.user.date_joined }}</p>
+                                                        {#                                                        <form method="post" style="direction: ltr">{% csrf_token %}#}
+                                                        {#                                                            {{ form.as_p }}#}
+                                                        {#                                                            <input type="submit">#}
+                                                        {#                                                        </form>#}
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end:: Card body-->
+                                    </div>
+                                    <!--end:: Card-->
+                                    <!--end:: Charts Widget 5-->
+                                </div>
+                            </div>
+                            <!--end::Row Date Picker-->
+                            {% block page_content2 %}{% endblock %}
+
+                        </div>
+                        <!--end::Container-->
+                    </div>
+                    <!--end::Entry-->
+                </div>
+
+
+                <!--end::Content-->
+
+                <!--begin::Footer-->
+                <div class="footer py-2 py-lg-0 my-5 d-flex flex-lg-column" id="kt_footer">
+                    <!--begin::Container-->
+                    <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
+                        <!--begin::Copyright-->
+                        <div class="text-dark order-2 order-md-1">
+                            <span class="text-muted font-weight-bold mr-2">2021©</span>
+                            <a target="_blank"
+                               class="text-dark-75 text-hover-primary">{% trans "All copyrights reserved for Maher Center." %}</a>
+                            {#                        <a target="_blank" class="text-dark-75 text-hover-primary">تمامی حقوق این سایت برای مرکز ماهر محفوظ است.</a>#}
+                        </div>
+                        <!--end::Copyright-->
+                        <!--begin::Nav-->
+                        <div class="nav nav-dark order-1 order-md-2">
+                            <span class="text-muted font-weight-bold nav-link"> {% trans "Implemented by:" %}</span>
+                            <a href="https://nsec.ir" class="nav-link  pl-0">{% trans "APA IUT" %} </a>
+                            {#                        <a href="https://nsec.ir" class="nav-link  pl-0">مرکز تخصصی آپا دانشگاه صنعتی اصفهان </a>#}
+                        </div>
+                        <!--end::Nav-->
+                    </div>
+                    <!--end::Container-->
+                </div>
+                <!--end::Footer-->
+            </div>
+            <!--end::Wrapper-->
+        </div>
+
+        <!--end::Page-->
+    </div>
+    <!--end::Main-->
+
+
+{% endblock %}
+
+{% block page_js_users %}
+
+    <script>
+
+
+        // f =$("#input").slider("getValue");
+        // console.log(f)
+
+        // window.addEventListener('range-changed', (e) => {
+        // const data = e.detail;
+        // console.log(data)
+        // data = { sliderId: null, minRangeValue: 0, maxRangeValue: 1000 }
+        // });
+    </script>
+{% endblock %}
+{% block page_js %}
+
+{% endblock %}

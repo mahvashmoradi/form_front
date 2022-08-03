@@ -1,0 +1,34 @@
+https://www.jqueryscript.net/time-clock/Pretty-Persian-Date-Time-Picker-with-jQuery-Bootstrap.html           //date_time picker
+
+
+https://maxshuty.github.io/accessible-web-components/                  //range selector
+
+
+https://stackoverflow.com/questions/4753946/html5-slider-with-two-inputs-possible     
+
+
+https://www.jqueryscript.net/form/Highly-Customizable-Range-Slider-Plugin-For-Bootstrap-Bootstrap-Slider.html          //bootstrap rage slider
+
+[
+  {
+    "sip": "185.188.113.0",
+    "eip": "185.188.113.255"
+  },
+  {
+    "sip": "194.146.148.0",
+    "eip": "194.146.151.255"
+  },
+  {
+    "sip": "176.101.32.0",
+    "eip": "176.101.55.255"
+  },
+  {
+    "sip": "92.249.56.0",
+    "eip": "92.249.59.255"
+  }]
+
+
+1559836672	1559837695	
+2959417344	2959423487	
+3264386048	3264387071	
+3116134656	3116134911
