@@ -1,3 +1,5 @@
+import json
+
 from django.http import JsonResponse
 from django.shortcuts import render
 
@@ -28,21 +30,25 @@ class DatePicker(View):
 def date_picker(request):
     print(dict(request.POST.items()))
     if request.method == 'POST':
-        extra_field = request.POST['data_form']
-        extra_field_count = (len(extra_field.split('&')) - 2)/2
-        x=0
+        extra_field = json.loads(request.POST['data_form'])
+
+        extra_field_count = int((len(extra_field) - 2)/2)
+        # extra_field_count = (len(extra_field.split('&')) - 2)/2
         # data = extra_field.split('&')
         # data = [x for each in data if ]
         # for word in extra_field.split('&'):
         #     if word.startswith('ip_st')
         # k = map(extra_field.split('&'),key=lambda x:x[1])
-        search_form = SearchForm(request.POST, extra=extra_field_count)
+        search_form = SearchForm(extra_field, extra=extra_field_count)
         # search_form = Search_form(request.POST)
         # print(search_form.fields)
         if search_form.is_valid():
-            print('clean', search_form.cleaned_data['ip_start_0'])
+            # print('clean', search_form.cleaned_data['ip_start_0'])
+            print('Valid')
+
         else:
-            print(search_form['ip_start_0.)'])
+            # print(search_form['ip_start_0.)'])
+            print('Not valid')
 
     else:
         search_form = SearchForm()

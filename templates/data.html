@@ -45,39 +45,40 @@
 
 
             $("#add_ip_range").click(function (event) {
-              var  count = $('#ip_ul li').length
-                console.log(count)
+                var count = $('#ip_ul li').length - 1
                 $('#ip_ul').append(`<li class="ip row align-items-baseline">
                        <p class="col-4" ><input class="start_ip" type="text"
-                                           name = "ip_start_`+ count +`"
+                                           name = "ip_start_` + count + `"
+                                           id = "ip_start_` + count + `"
                                           inputmode="numeric"
                                              pattern="[0-9\s.]{7,15}"
                                             autocomplete="cc-number"
                                          maxlength="15"
                                            placeholder="ipv4"></p>
                         <p class="col-4" ><input class="end_ip" type="text"
-                                           name = "ip_end_`+ count +`"
+                                           name = "ip_end_` + count + `"
+                                           id = "ip_end_` + count + `"
                                           inputmode="numeric"
                                             pattern="[0-9\s.]{7,15}"
                                          autocomplete="cc-number"
                                         maxlength="15"
                                          placeholder="ipv4"></p>
                        <hr></li>`)
-              //  $('#ip_ul').append(`<li class="ip row align-items-baseline">
-                     //   <p class="col-4" ><input class="start_ip" type="text"
-                     //                     inputmode="numeric"
-                     //                        pattern="[0-9\s.]{7,15}"
-                     //                        autocomplete="cc-number"
-                      //                    maxlength="15"
-                     //                       placeholder="ipv4"></p>
-                     //   <p class="col-4" ><input class="end_ip" type="text"
-                     //                       inputmode="numeric"
-                     //                        pattern="[0-9\s.]{7,15}"
-                      //                      autocomplete="cc-number"
-                     //                     maxlength="15"
-                      //                     placeholder="ipv4"></p>
-                     //    <a class="col-4 delete_item" href="#">
-                     //   <i class="fa fa-remove text-danger fa-lg" aria-hidden="true"></i> </a><hr></li>`)
+                //  $('#ip_ul').append(`<li class="ip row align-items-baseline">
+                //   <p class="col-4" ><input class="start_ip" type="text"
+                //                     inputmode="numeric"
+                //                        pattern="[0-9\s.]{7,15}"
+                //                        autocomplete="cc-number"
+                //                    maxlength="15"
+                //                       placeholder="ipv4"></p>
+                //   <p class="col-4" ><input class="end_ip" type="text"
+                //                       inputmode="numeric"
+                //                        pattern="[0-9\s.]{7,15}"
+                //                      autocomplete="cc-number"
+                //                     maxlength="15"
+                //                     placeholder="ipv4"></p>
+                //    <a class="col-4 delete_item" href="#">
+                //   <i class="fa fa-remove text-danger fa-lg" aria-hidden="true"></i> </a><hr></li>`)
                 event.preventDefault();
 
             });
@@ -88,10 +89,13 @@
             });
 
 
-
-
-                var frm = $("#search_form")
-                            data_form = {'date_start' : $('#date_start').val()}
+            var frm = $("#search_form")
+            var data_form = {}
+            var date_start = $('#date_start').val()
+            var date_end = $('#date_end').val()
+            data_form['date_start'] = date_start
+            data_form['date_end'] = date_end
+            // data_form = {}
 
             frm.submit(function (event) {
                 // from_text_miladi = document.getElementById('start_date_miladi');
@@ -101,22 +105,24 @@
                 //  ip = $("#my_custom_lable").text()
                 // data_s = frm.serialize()
                 // console.log(data_s)
-                  const count = $('#ip_ul li').length - 1
+                const count = $('#ip_ul li').length - 1
                 var ip_e;
                 var ip_s;
                 for (let i = 0; i < count; i++) {
-                    id_start = '#ip_start_' + i
-                    id_end = '#ip_end_' + i
-                    ip_s = $(id_start).val()
-                    ip_e = $(id_end).val()
+                    id_start = 'ip_start_' + i
+                    id_end = 'ip_end_' + i
+
+
+                    ip_s = $('#'+id_start).val()
+                    ip_e = $('#'+id_end).val()
                     if (ip_s && ip_e) {
                         data_form[id_start] = ip_s
                         data_form[id_end] = ip_e
 
                     }
-                    console.log(data_form)
                 }
 
+                console.log(data_form)
 
                 // ajax
                 $.ajax({
@@ -130,10 +136,11 @@
                     // },
                     data: {
                         csrfmiddlewaretoken: '{{ csrf_token }}',
-                        'data_form': data_form,
+                        'data_form': JSON.stringify(data_form),
+                        {#'data_form': data_form,#}
                     },
                     success: function (data) {
-                       // console.log(data)
+                        // console.log(data)
 
                     },
                     error: function (xhr, type, exception) {

@@ -69,9 +69,10 @@ class TimeInput(forms.TimeInput):
 #             }
 
 class SearchForm(forms.Form):
-    date_start = JalaliDateField(widget=AdminJalaliDateWidget, initial=today)
+    date_start = JalaliDateField(widget=AdminJalaliDateWidget(attrs={'id': 'date_start'}), initial=today)
     # time_start = forms.TimeField(widget=TimeInput)
-    # date_end = JalaliDateField(widget=AdminJalaliDateWidget)
+
+    date_end = JalaliDateField(widget=AdminJalaliDateWidget(attrs={'id': 'date_end'}), initial=today)
     # time_end = forms.TimeField(widget=TimeInput)
     # ip_start = forms.GenericIPAddressField(required=False, empty_value=None)
     # ip_end = forms.GenericIPAddressField(required=False, empty_value=None)
@@ -83,7 +84,9 @@ class SearchForm(forms.Form):
         # self.fields['extra_field_count'].initial = extra_fields
 
         for index in range(int(extra_fields)):
-            print('extraa')
-            self.fields['ip_start_{index}'.format(index=index)] = forms.GenericIPAddressField(required=False, empty_value=None)
-            self.fields['ip_end_{index}'.format(index=index)] = forms.GenericIPAddressField(required=False, empty_value=None)
+            # print('extraa')
+            self.fields['ip_start_{index}'.format(index=index)] = forms.GenericIPAddressField(required=False,
+                                                                                              empty_value=None)
+            self.fields['ip_end_{index}'.format(index=index)] = forms.GenericIPAddressField(required=False,
+                                                                                            empty_value=None)
             # print(self.fields)
